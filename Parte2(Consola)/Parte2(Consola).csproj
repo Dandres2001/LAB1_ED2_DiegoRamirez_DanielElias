@@ -6,4 +6,8 @@
     <RootNamespace>Parte2_Consola_</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LibreriaRD2\LibreriaRD2.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAB1_ED2_DiegoRamírez_DanielElias", "LAB1_ED2_DiegoRamírez_DanielElias\LAB1_ED2_DiegoRamírez_DanielElias.csproj", "{EC55D21B-88EE-4140-B757-2B082A989270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parte2(Consola)", "Parte2(Consola)\Parte2(Consola).csproj", "{922BE80A-0EAC-453E-A52F-E729F1B6FB65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parte2(Consola)", "Parte2(Consola)\Parte2(Consola).csproj", "{922BE80A-0EAC-453E-A52F-E729F1B6FB65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreriaRD2", "LibreriaRD2\LibreriaRD2.csproj", "{E3BBCC29-9F80-4DC5-8A1A-8BF9A7DF5D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{922BE80A-0EAC-453E-A52F-E729F1B6FB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922BE80A-0EAC-453E-A52F-E729F1B6FB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{922BE80A-0EAC-453E-A52F-E729F1B6FB65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BBCC29-9F80-4DC5-8A1A-8BF9A7DF5D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BBCC29-9F80-4DC5-8A1A-8BF9A7DF5D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BBCC29-9F80-4DC5-8A1A-8BF9A7DF5D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BBCC29-9F80-4DC5-8A1A-8BF9A7DF5D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
