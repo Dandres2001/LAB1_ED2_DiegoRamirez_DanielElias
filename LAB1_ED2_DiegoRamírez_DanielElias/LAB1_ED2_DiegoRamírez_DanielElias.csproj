@@ -4,5 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LibreriaRD2\LibreriaRD2.csproj" />
+  </ItemGroup>
+
 
 </Project>
