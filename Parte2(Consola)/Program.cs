@@ -8,7 +8,9 @@ namespace Parte2_Consola_
         static void Main(string[] args)
         {
 
-
+            string inorden ="";
+            string orden = "";
+            string orden2 = ""; 
             BTree<int> arbol = new BTree<int>(5);
            
             arbol.insert(10);
@@ -37,15 +39,82 @@ namespace Parte2_Consola_
             arbol.insert(60);
             arbol.insert(50);
             arbol.insert(90);
-            arbol.delete(51);
-            arbol.delete(34);
-            arbol.delete(10);
-            arbol.delete(12);
-            arbol.delete(81);
-            arbol.delete(60);
-            arbol.delete(90);
-            arbol.delete(46);
-            arbol.insert(1);
+         
+
+      
+            //arbol.delete(51);
+            //arbol.delete(34);
+            //arbol.delete(10);
+            //arbol.delete(12);
+            //arbol.delete(81);
+            //arbol.delete(60);
+            //arbol.delete(90);
+            //arbol.delete(46);
+            //arbol.insert(1);
+      void inorder( Bnode<int> current)
+            {
+                //int i; 
+                if (current != null)
+                {
+                    for (int i = 0; i < current.getGastados() + 1; i++)
+                    {
+
+                        inorder(current.getApuntadores(i));
+                        if (i < current.getGastados())
+                        {
+                           inorden += current.getData(i) + " ";
+                        }
+                    }
+               
+                }
+           
+            }
+            void preorden(Bnode<int> current)
+            {
+                if (current != null)
+                {
+                    for (int i = 0; i < current.getGastados() + 1; i++)
+                    {
+
+                       
+                        if (i < current.getGastados())
+                        {
+                           orden+= current.getData(i) + " ";
+                        }
+                       preorden(current.getApuntadores(i));
+                    }
+                }
+            }
+
+            void postorden (Bnode<int> current)
+            {
+            
+                if (current != null)
+                {
+                    postorden(current.getApuntadores(0));
+                    for (int i = 0; i < current.getGastados() + 1; i++)
+                    {
+                        postorden(current.getApuntadores(i + 1));
+                        if (i < current.getGastados())
+                        {
+                            orden2 += current.getData(i) + " ";
+                        }
+                
+                        
+
+
+                    }
+                }
+            }
+            inorder(arbol.root);
+            preorden(arbol.root);
+            postorden(arbol.root);
+            Console.WriteLine("en orden: " + inorden);
+            Console.WriteLine("en pre orden: " + orden);
+            Console.WriteLine("en post orden " + orden2);
+            Console.ReadKey(); 
+
         }
+      
     }
 }
