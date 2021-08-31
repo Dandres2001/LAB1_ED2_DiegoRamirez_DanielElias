@@ -9,6 +9,8 @@ using LAB1_ED2_DiegoRamírez_DanielElias.Data;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
+using LibreriaRD2;
+
 //using Newtonsoft.Json;
 
 
@@ -21,6 +23,9 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        
+        
+        public static bool ordenSeteado = false;
         // GET: api/<MoviesController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -30,34 +35,60 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
 
         // GET api/<MoviesController>/5
         [HttpGet("{recorrido}")]
-        public IEnumerable<Movies> Get([FromRoute]string recorrido)
+        public string Get([FromRoute]string recorrido)
         {
+            string returnJson = "";
             if (recorrido == "preorder")
             {
-
+                Singleton.Instance.bTree.traversal.Clear();
+                Singleton.Instance.bTree.preorden(Singleton.Instance.bTree.root);
+                for (int i = 0; i < Singleton.Instance.bTree.traversal.Count; i++)
+                {
+                    returnJson += JsonSerializer.Serialize<Movies>(Singleton.Instance.bTree.traversal.ElementAt(i));
+                }
+                
             }
             else if (recorrido == "inorder")
             {
-
+                Singleton.Instance.bTree.traversal.Clear();
+                Singleton.Instance.bTree.inorder(Singleton.Instance.bTree.root);
+                for (int i = 0; i < Singleton.Instance.bTree.traversal.Count; i++)
+                {
+                    returnJson += JsonSerializer.Serialize<Movies>(Singleton.Instance.bTree.traversal.ElementAt(i));
+                }
             }
             else if (recorrido == "postorder")
             {
-
+                Singleton.Instance.bTree.traversal.Clear();
+                Singleton.Instance.bTree.postorden(Singleton.Instance.bTree.root);
+                for (int i = 0; i < Singleton.Instance.bTree.traversal.Count; i++)
+                {
+                    returnJson += JsonSerializer.Serialize<Movies>(Singleton.Instance.bTree.traversal.ElementAt(i));
+                }
             }
             else
             {
+                return "Recorrido no válido";
                 
             }
-            return Singleton.Instance.MoviesList;
+
+           
+            return returnJson;
         }
 
         // POST api/<MoviesController>
         [HttpPost]
         public ActionResult SetGrado([FromBody] int grado)
         {
+           
             try
             {
+
                 Singleton.Instance.Grado = grado;
+                ordenSeteado = true;
+                Singleton.Instance.bTree = null;
+                Singleton.Instance.bTree = new BTree<Movies>(grado);
+               
                 return Created("", grado);
             }
             catch
@@ -74,17 +105,22 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
             try
             {
 
-                
+                if (ordenSeteado == false)
+                {
+                    return BadRequest();
+                }
 
 
                
 
-                var movies = JsonSerializer.Deserialize<List<Movies>>(json.GetRawText().ToString());
-               
-               
+                Singleton.Instance.MoviesList = JsonSerializer.Deserialize<List<Movies>>(json.GetRawText().ToString());
 
+                for (int i = 0; i < Singleton.Instance.MoviesList.Count; i++)
+                {
+                    Singleton.Instance.bTree.insert(Singleton.Instance.MoviesList.ElementAt(i));
+                }
     
-                return Ok();
+                return Created("", null);
             }
             catch
             {
@@ -92,16 +128,21 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
             }
 
         }
-        // PUT api/<MoviesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+
+        [HttpDelete("populate/{title}")]
+        public void DeleteNode(string title)
         {
+
         }
 
         // DELETE api/<MoviesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public void Delete()
         {
+            Singleton.Instance.bTree = null;
         }
+
+        
+
     }
 }

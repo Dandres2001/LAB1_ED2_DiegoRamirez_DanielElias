@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LAB1_ED2_DiegoRamírez_DanielElias.Models;
+using LibreriaRD2;
 
 namespace LAB1_ED2_DiegoRamírez_DanielElias.Data
 {
@@ -10,11 +11,15 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Data
     {
         private readonly static Singleton _instance = new Singleton();
         public List<Movies> MoviesList { get; set; }
+        public BTree<Movies> bTree { get; set; }
         public int Grado { get; set; }
         private Singleton()
         {
-            MoviesList = new List<Movies>();
             Grado = 0;
+            MoviesList = new List<Movies>();
+
+            
+           
 
         }
 

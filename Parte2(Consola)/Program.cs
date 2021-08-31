@@ -53,6 +53,11 @@ namespace Parte2_Consola_
             //arbol.delete(90);
             //arbol.delete(46);
             //arbol.insert(1);
+
+
+
+
+
       void inorder( Bnode<int> current)
             {
                 //int i; 

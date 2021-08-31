@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections;
 
+
 namespace LibreriaRD2
 {
-   public class BTree<T> where T : IComparable
+   public class BTree<T> where T : IComparable 
     {
    
         private static int orden { get; set; }
@@ -18,7 +19,8 @@ namespace LibreriaRD2
         bool aumentarnivel;
         bool found;
         private int nivel;
-        private int nodos; 
+        private int nodos;
+        public List<T> traversal = new List<T>();
 
         public BTree(int Orden )
         {
@@ -457,7 +459,64 @@ namespace LibreriaRD2
                 }
             }
         }
+        public void inorder(Bnode<T> current)
+        {
+            
+            //int i; 
+            if (current != null)
+            {
+                for (int i = 0; i < current.getGastados() + 1; i++)
+                {
 
-       
+                    inorder(current.getApuntadores(i));
+                    if (i < current.getGastados())
+                    {
+                        traversal.Add(current.getData(i));
+                    }
+                }
+
+            }
+
+        }
+        public void preorden(Bnode<T> current)
+        {
+           
+            if (current != null)
+            {
+                for (int i = 0; i < current.getGastados() + 1; i++)
+                {
+
+
+                    if (i < current.getGastados())
+                    {
+                        traversal.Add(current.getData(i));
+                    }
+                    preorden(current.getApuntadores(i));
+                }
+            }
+        }
+
+        public void postorden(Bnode<T> current)
+        {
+            
+            if (current != null)
+            {
+                postorden(current.getApuntadores(0));
+                for (int i = 0; i < current.getGastados() + 1; i++)
+                {
+                    postorden(current.getApuntadores(i + 1));
+                    if (i < current.getGastados())
+                    {
+                        traversal.Add(current.getData(i));
+                    }
+
+
+
+
+                }
+            }
+        }
+
+
     }
 }

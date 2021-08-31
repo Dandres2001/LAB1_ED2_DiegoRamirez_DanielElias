@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace LibreriaRD2
 {
-    public class Bnode<T> where T: IComparable
+   public class Bnode<T> where T: IComparable
     {
         public Bnode<T>[] punteros;
 

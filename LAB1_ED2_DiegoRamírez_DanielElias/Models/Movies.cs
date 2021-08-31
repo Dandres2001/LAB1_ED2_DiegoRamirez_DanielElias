@@ -5,18 +5,31 @@ using System.Threading.Tasks;
 
 namespace LAB1_ED2_DiegoRamírez_DanielElias.Models
 {
-    public class Movies
+    public class Movies : IComparable
     {
-       public string Title { get; set; }
-        public string Director { get; set; }
-        public string Genre { get; set; }
-        public double IMDBrating { get; set; }
-        public double RottenTomatoesRating { get; set; }
-        public string ReleaseDate { get; set; }
+        public string director { get; set; }
+
+        public double imdbRating { get; set; }
+
+        public string genre { get; set; }
+
+        public string releaseDate { get; set; }
+
+        public double rottenTomatoesRating { get; set; }
+        public string title { get; set; }
+        
+        
+       
+        
+        
 
 
 
-
+        public int CompareTo(object obj)
+        {
+            var ordertree = ((Movies)obj).title;
+            return title.CompareTo(ordertree);
+        }
 
     }
 }
