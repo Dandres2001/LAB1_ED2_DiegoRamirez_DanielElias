@@ -1,12 +1,14 @@
 ﻿using System;
 using LibreriaRD2;
 
+
 namespace Parte2_Consola_
 {
     class Program
     {
         static void Main(string[] args)
         {
+
 
             string inorden ="";
             string orden = "";
@@ -113,6 +115,9 @@ namespace Parte2_Consola_
             Console.WriteLine("en pre orden: " + orden);
             Console.WriteLine("en post orden " + orden2);
             Console.ReadKey(); 
+
+            
+
 
         }
       

@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+
     <ProjectReference Include="..\LibreriaRD2\LibreriaRD2.csproj" />
+
+    <PackageReference Include="JSON" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Text.Json" Version="5.0.2" />
+    <PackageReference Include="System.Windows.Extensions" Version="5.0.0" />
+
   </ItemGroup>
 
 
