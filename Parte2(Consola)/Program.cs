@@ -41,10 +41,11 @@ namespace Parte2_Consola_
             arbol.insert(60);
             arbol.insert(50);
             arbol.insert(90);
-         
+        string prueba =    arbol.searchbydata(arbol.root, 60, 0).ToString();
 
-      
-            //arbol.delete(51);
+            Console.WriteLine(prueba);
+
+            arbol.delete(51);
             //arbol.delete(34);
             //arbol.delete(10);
             //arbol.delete(12);
@@ -58,7 +59,7 @@ namespace Parte2_Consola_
 
 
 
-      void inorder( Bnode<int> current)
+            void inorder( Bnode<int> current)
             {
                 //int i; 
                 if (current != null)

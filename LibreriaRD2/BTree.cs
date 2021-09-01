@@ -223,7 +223,25 @@ namespace LibreriaRD2
             return j; 
         }
 
-        
+        public T searchbydata(Bnode<T> current, T data, T temp)
+        {
+            if  (current != null)
+            {
+                for (int i=0; i<current.getGastados(); i++)
+                {
+                    if (current.getData(i).CompareTo(data) == 0)
+                    {
+                        temp = current.getData(i);
+                    }
+                 
+                }
+                for (int i = 0; i <= current.getGastados(); i++)
+                {
+                    temp = searchbydata(current.getApuntadores(i), data, temp);
+                }
+            }
+            return temp; 
+        }
    
         public void delete(T data)
         {
