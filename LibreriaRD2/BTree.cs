@@ -246,10 +246,7 @@ namespace LibreriaRD2
                     temp = searchbydata(current.getApuntadores(i), data, temp);
                 }
             }
-            //else
-            //{
-            //    return default(T);
-            //}
+         
             return temp; 
         }
    

@@ -139,9 +139,9 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
             aux.title = title;
             try
             {
-                if (Singleton.Instance.bTree.searchbydata(Singleton.Instance.bTree.root, aux, null).title == null)
+                if (Singleton.Instance.bTree.searchbydata(Singleton.Instance.bTree.root, aux, null) == null)
                 {
-                    return BadRequest();
+                    return NotFound();
                 }
                 else
                 {
