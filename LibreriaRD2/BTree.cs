@@ -8,11 +8,17 @@ using System.Collections;
 
 namespace LibreriaRD2
 {
-   public class BTree<T> where T : IComparable 
+
+
+    public class BTree<T> where T : IComparable 
     {
-   
+       
+
         private static int orden { get; set; }
         public Bnode<T> root;
+
+     
+
         T medium;
         Bnode<T> TempNode;
       
@@ -240,6 +246,10 @@ namespace LibreriaRD2
                     temp = searchbydata(current.getApuntadores(i), data, temp);
                 }
             }
+            //else
+            //{
+            //    return default(T);
+            //}
             return temp; 
         }
    
@@ -537,4 +547,5 @@ namespace LibreriaRD2
 
 
     }
+
 }

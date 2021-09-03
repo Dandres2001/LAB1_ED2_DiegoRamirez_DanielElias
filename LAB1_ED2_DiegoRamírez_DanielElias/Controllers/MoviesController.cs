@@ -101,7 +101,7 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
         
         public ActionResult PopulateTree([FromBody] JsonElement json) 
         {
-
+            Singleton.Instance.MoviesList.Clear();
             try
             {
 
@@ -111,7 +111,7 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
                 }
 
 
-               
+             
 
                 Singleton.Instance.MoviesList = JsonSerializer.Deserialize<List<Movies>>(json.GetRawText().ToString());
 
@@ -119,20 +119,42 @@ namespace LAB1_ED2_DiegoRamírez_DanielElias.Controllers
                 {
                     Singleton.Instance.bTree.insert(Singleton.Instance.MoviesList.ElementAt(i));
                 }
-    
-                return Created("", null);
+
+                return Ok();
             }
             catch
             {
                 return BadRequest();
             }
-
+            
         }
 
         [HttpDelete("populate/{title}")]
-        public void DeleteNode(string title)
+        public ActionResult DeleteNode(string title)
         {
 
+         
+
+            var aux = new Movies();
+            aux.title = title;
+            try
+            {
+                if (Singleton.Instance.bTree.searchbydata(Singleton.Instance.bTree.root, aux, null).title == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    Singleton.Instance.bTree.delete(Singleton.Instance.bTree.searchbydata(Singleton.Instance.bTree.root, aux, null));
+                    return Ok();
+                }
+
+            }
+            catch
+            {
+                return BadRequest();
+            }
+           
         }
 
         // DELETE api/<MoviesController>/5
